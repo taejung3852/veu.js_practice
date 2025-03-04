@@ -1,17 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <h4>{{ products[0] }}</h4>
-    <p> 50 만원</p>
+  <!-- class 속성으로 해당 태그의 이름을 붙여줄 수 있다. -->
+  <!-- 이 이름의 역할은 css에서 불러와서 꾸며줄 수 있다. -->
+  <div class="menu">
+    <a v-for="작명 in menus" :key="작명">{{작명}}</a>
   </div>
-  <div>
-    <h4>{{products[1]}}</h4>
-    <p>70 만원</p>
+
+  <div v-for="(product, i) in products" :key="product">
+    <h4>{{ product }}</h4>
+    <p>{{prices[i]}} 만원</p>
   </div>
-  <div>
-    <h4>{{ products[2] }}</h4>
-    <p>90 만원</p>
-  </div>
+  
 </template>
 
 <script>
@@ -23,7 +21,9 @@ export default {
   // (중요)이 문법을 언제 왜 쓰는지 배워야한다.
   data(){
     return{
-      products : ['신부동원룸', '안서동원룸', '두정동원룸']
+      products : ['신부동원룸', '안서동원룸', '두정동원룸'],
+      menus : ['Home', 'Shop', 'About'],
+      prices : [50, 70, 90]
     }
   },
   components: {
@@ -39,6 +39,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.menu {
+  background: darkslateblue;
+  padding: 15px;
+  border-radius: 5px;
+}
+.menu a{
+  color: white;
+  padding:10px;
 }
 </style>
