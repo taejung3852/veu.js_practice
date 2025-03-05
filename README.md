@@ -1,24 +1,83 @@
-# vuedongsan
 
-## Project setup
-```
-npm install
-```
+![Vue.js Logo](https://vuejs.org/images/logo.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+**Vue.js (매우)기초 학습 프로젝트**  
+이 프로젝트는 Vue.js의 핵심 개념을 배우고 실습하기 위해 개발된 간단한 부동산 목록 애플리케이션입니다. 사용자는 방 목록을 탐색하고 모달 창을 통해 상세 정보를 확인할 수 있습니다. 깔끔한 UI와 반응형 기능을 통해 Vue.js의 강력함을 체험할 수 있습니다. 아래 유튜브 강의를 보고 학습했습니다.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+[유튜브 - 코딩애플]
+https://www.youtube.com/watch?v=-tVaahsXpwk&list=PLfLgtT94nNq3Br68sEe26jkOqCPK_8UQ-
 
-### Lints and fixes files
-```
-npm run lint
-```
+---
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## ✨ 주요 기능
+
+- **방 목록 표시**  
+  이미지, 제목, 가격이 포함된 부동산 목록을 한눈에 확인할 수 있습니다.
+- **허위 매물 신고**  
+  버튼 클릭으로 신고 횟수를 실시간으로 증가시키며, 신고수를 즉시 반영합니다.
+- **상세 모달 창**  
+  방 제목을 클릭하면 해당 방의 상세 정보가 담긴 모달 창이 자연스럽게 나타납니다.
+
+---
+
+## 🛠 사용된 Vue.js 기술
+
+이 프로젝트는 Vue.js의 기초를 다지기 위해 다음과 같은 핵심 기능을 활용했습니다:
+
+- **데이터 바인딩**  
+  `{{ }}`와 `v-bind (:)`를 통해 데이터와 UI를 동기화합니다.
+- **이벤트 처리**  
+  `v-on (@)`으로 클릭 이벤트를 처리하며, 사용자 상호작용을 반영합니다.
+- **조건부 렌더링**  
+  `v-if`를 사용해 모달 창의 표시 여부를 동적으로 제어합니다.
+- **반복 렌더링**  
+  `v-for`로 방 목록을 효율적으로 생성합니다.
+- **메서드**  
+  사용자 입력을 처리하는 함수를 정의해 기능을 확장했습니다.
+- **외부 데이터 가져오기**  
+  `import`를 통해 별도의 JavaScript 파일에서 데이터를 로드합니다.
+
+---
+
+## 🚀 설치 및 실행 방법
+
+1. **종속성 설치**  
+   ```bash
+   npm install
+   ```
+
+2. **개발 서버 실행**  
+   ```bash
+   npm run serve
+   ```
+
+3. **브라우저에서 확인**  
+   실행 후 제공된 URL(예: `http://localhost:8080`)을 브라우저에서 열어보세요.
+
+> **사전 요구 사항**: Node.js LTS 버전이 설치되어 있어야 합니다. [Node.js 공식 사이트](https://nodejs.org)에서 다운로드하세요.
+
+---
+
+## 📚 학습 목표
+
+이 프로젝트는 Vue.js의 기초를 익히고 저의 프로젝트에 적용할 수 있는 역량을 키우기 위해 학습했습니다:
+
+- **컴포넌트 구조 이해**: 단일 컴포넌트로 UI와 로직을 관리합니다.
+- **반응형 데이터 활용**: 데이터 변경 시 UI가 자동으로 업데이트됩니다.
+- **동적 UI 구현**: 사용자 이벤트에 반응하는 인터랙티브한 기능을 만듭니다.
+- **모듈화 연습**: 외부 데이터를 불러와 코드의 재사용성을 높였습니다.
+
+---
+
+## 📂 프로젝트 구조
+
+```plaintext
+├── node_modules/       # 프로젝트 종속성
+├── public/            # 정적 파일 (HTML, 이미지 등)
+├── src/               # 소스 코드
+│   ├── assets/        # 이미지 및 외부 데이터 파일 (oneroom.js)
+│   ├── App.vue        # 메인 컴포넌트
+│   └── main.js        # 앱 진입점
+├── package.json       # 프로젝트 설정 및 의존성 정보
+└── README.md          # 이 문서
+```
