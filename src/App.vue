@@ -1,13 +1,24 @@
 <template>
   <!-- class 속성으로 해당 태그의 이름을 붙여줄 수 있다. -->
   <!-- 이 이름의 역할은 css에서 불러와서 꾸며줄 수 있다. -->
+  
+  <div class="black-bg" v-if="modal_window[selectIndex]">
+    <div class="white-bg">
+      <h4>{{ oneRooms[selectIndex].title }}</h4>
+      <p>{{ oneRooms[selectIndex].content }}</p>
+      <button class="modal-close-button" @click="selectIndex=null">닫기</button>
+    </div>
+  </div>
+  
   <div class="menu">
     <a v-for="menu in menus" :key="menu">{{menu}}</a>
   </div>
 
-  <div v-for="(_, i) in products" :key="i"> <!--:key 뒤에는 고유한 값을 넣어줘야하기 때문에 i(index)를 넣어주는 것이 좋다.-->
-    <h4>{{ products[i] }}</h4>
-    <p>{{prices[i]}} 만원</p>
+  
+  <div v-for="(_, i) in oneRooms" :key="i"> <!--:key 뒤에는 고유한 값을 넣어줘야하기 때문에 i(index)를 넣어주는 것이 좋다.-->
+    <img :src="oneRooms[i].image" class="room-img">
+    <h4 @click=convert(i)>{{ oneRooms[i].title }}</h4>
+    <p>{{oneRooms[i].price}} 만원</p>
     <button @click=increase(i)>허위매물신고</button> <span>신고수 : {{ reports[i] }}</span>
   </div>
   
@@ -15,6 +26,7 @@
 
 <script>
 
+import oneRoomInfo from './assets/oneroom.js';
 
 export default {
   name: 'App',
@@ -22,15 +34,20 @@ export default {
   // (중요)이 문법을 언제 왜 쓰는지 배워야한다.
   data(){
     return{
-      reports : [0, 0, 0],
-      products : ['신부동원룸', '안서동원룸', '두정동원룸'],
+      oneRooms : oneRoomInfo,
+      selectIndex : null, 
+      modal_window : [false, false, false, false, false, false],
+      reports : [0, 0, 0, 0, 0, 0],
       menus : ['Home', 'Shop', 'About'],
-      prices : [50, 70, 90]
     }
   },
   methods : {
     increase(i){
       this.reports[i]++;
+    },
+    convert(i){
+      this.selectIndex = i;
+      this.modal_window[i] = !this.modal_window[i];
     }
   },
   components: {
@@ -40,6 +57,29 @@ export default {
 </script>
 
 <style>
+body{
+  margin:0
+}
+div{
+  box-sizing: border-box;
+}
+.black-bg{
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed; padding: 20px;
+}
+
+.white-bg{
+  width: 100%; background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.room-img{
+  width: 100%;
+  margin-top: 40px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
